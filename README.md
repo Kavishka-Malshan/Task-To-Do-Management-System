@@ -191,10 +191,3 @@ The application includes error handling for:
 - Adjust PHP `session.gc_maxlifetime` setting in php.ini
 - Default is usually 1440 seconds (24 minutes)
 
-## License
-
-This project is created for educational purposes as part of an internship assessment.
-
-## Support
-
-For issues or questions, please review the code comments or check the database schema in `database.sql`.
