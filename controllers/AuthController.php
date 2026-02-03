@@ -66,7 +66,7 @@ class AuthController {
                     setFlash('success', 'Login successful');
                     redirect('?action=tasks');
                 } else {
-                    $this->validator->addError('general', 'Invalid email or password');
+                    $this->validator->addError('general', 'Invalid username or password');
                 }
             }
         }

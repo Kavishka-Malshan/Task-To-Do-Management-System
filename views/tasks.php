@@ -1,4 +1,4 @@
-<?php Session::start(); ?>
+
 
 <div class="tasks-container">
     <div class="tasks-header">

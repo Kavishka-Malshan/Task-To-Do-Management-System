@@ -1,4 +1,3 @@
-<?php Session::start(); ?>
 
 <div class="auth-container">
     <div class="auth-card">

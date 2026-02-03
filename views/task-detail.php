@@ -1,4 +1,4 @@
-<?php Session::start(); ?>
+
 
 <div class="task-detail-container">
     <div class="task-detail-header">
@@ -23,18 +23,16 @@
                 <?php foreach ($todos as $todo): ?>
                     <div class="todo-item <?php echo $todo['is_completed'] ? 'completed' : ''; ?>">
                         <div class="todo-content">
+                            <form method="POST" action="?action=toggle_todo" style="display:inline; margin-right: 10px;">
+                                <input type="hidden" name="todo_id" value="<?php echo $todo['id']; ?>">
+                                <input type="hidden" name="task_id" value="<?php echo $task['id']; ?>">
+                                <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
+                                <input type="checkbox" onchange="this.form.submit()" <?php echo $todo['is_completed'] ? 'checked' : ''; ?> style="width: 18px; height: 18px; vertical-align: middle;">
+                            </form>
                             <span class="todo-text"><?php echo htmlspecialchars($todo['text']); ?></span>
                             <span class="todo-date"><?php echo date('M d, Y', strtotime($todo['created_at'])); ?></span>
                         </div>
                         <div class="todo-actions">
-                            <form method="POST" action="?action=toggle_todo" style="display:inline;">
-                                <input type="hidden" name="todo_id" value="<?php echo $todo['id']; ?>">
-                                <input type="hidden" name="task_id" value="<?php echo $task['id']; ?>">
-                                <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
-                                <button type="submit" class="btn btn-small <?php echo $todo['is_completed'] ? 'btn-incomplete' : 'btn-complete'; ?>">
-                                    <?php echo $todo['is_completed'] ? 'Mark Incomplete' : 'Mark Complete'; ?>
-                                </button>
-                            </form>
                             <a href="?action=edit_todo&id=<?php echo $todo['id']; ?>&task_id=<?php echo $task['id']; ?>" class="btn btn-small btn-secondary">Edit</a>
                             <form method="POST" action="?action=delete_todo" style="display:inline;" onsubmit="return confirm('Delete this item?');">
                                 <input type="hidden" name="todo_id" value="<?php echo $todo['id']; ?>">

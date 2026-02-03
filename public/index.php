@@ -36,6 +36,9 @@ switch ($action) {
 
     case 'login':
         $data = $authController->login();
+        // Extract errors and csrf_token for the view
+        $errors = isset($data['errors']) ? $data['errors'] : [];
+        $csrf_token = isset($data['csrf_token']) ? $data['csrf_token'] : '';
         ob_start();
         include __DIR__ . '/../views/login.php';
         $content = ob_get_clean();
@@ -47,6 +50,9 @@ switch ($action) {
 
     case 'tasks':
         $data = $taskController->list();
+        // Extract tasks and csrf_token for the view
+        $tasks = isset($data['tasks']) ? $data['tasks'] : [];
+        $csrf_token = isset($data['csrf_token']) ? $data['csrf_token'] : '';
         ob_start();
         include __DIR__ . '/../views/tasks.php';
         $content = ob_get_clean();
@@ -54,6 +60,9 @@ switch ($action) {
 
     case 'create':
         $data = $taskController->create();
+        // Extract errors and csrf_token for the view
+        $errors = isset($data['errors']) ? $data['errors'] : [];
+        $csrf_token = isset($data['csrf_token']) ? $data['csrf_token'] : '';
         ob_start();
         include __DIR__ . '/../views/create-task.php';
         $content = ob_get_clean();

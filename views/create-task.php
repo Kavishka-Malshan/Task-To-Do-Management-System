@@ -1,4 +1,4 @@
-<?php Session::start(); ?>
+
 
 <div class="form-container">
     <h1>Create New Task</h1>
